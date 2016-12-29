@@ -1,9 +1,5 @@
 *** Settings ***
-Documentation          This example demonstrates executing commands on a remote machine
-...                    and getting their output and the return code.
-...
-...                    Notice how connections are handled as part of the suite setup and
-...                    teardown. This saves some time when executing several test cases.
+Documentation          This uses SSH to connect to a bunch of systems.
 
 Library                SSHLibrary
 Library                OperatingSystem
@@ -16,8 +12,7 @@ ${PASSWORD}            gundog
 
 *** Test Cases ***
 Execute Command And Verify Output
-    [Documentation]    Execute Command can be used to ran commands on the remote machine.
-    ...                The keyword returns the standard output by default.
+    [Documentation]    For an IP in a list of servers, run a command.
 
     :FOR    ${addr}   IN    ${servers}
     \    Open Connection    ${addr}
